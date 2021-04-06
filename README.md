@@ -24,7 +24,7 @@ This can be used for any kind of string mapping, and has been used in email body
 ## Install
 Using NuGet
 ```sh
-Install-Package FieldMapper
+Install-Package Io.JoeMoceri.FieldMapper
 ```
 
 <a name="usage"></a>

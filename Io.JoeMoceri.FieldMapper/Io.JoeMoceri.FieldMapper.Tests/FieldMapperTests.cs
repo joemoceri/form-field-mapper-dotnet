@@ -217,7 +217,7 @@ namespace FieldMapper.Tests
         }
 
         [TestMethod]
-        public void UniversalParser_NestedKeys_Double_OnDifferentLines()
+        public void FieldMapperTests_NestedKeys_Double_OnDifferentLines()
         {
             // Arrange
             var emailKey = "Email Name";
@@ -249,7 +249,7 @@ namespace FieldMapper.Tests
 
 
         [TestMethod]
-        public void UniversalParser_NestedKeys_Triple_OnSameLines()
+        public void FieldMapperTests_NestedKeys_Triple_OnSameLines()
         {
             // Arrange
             string emailKey = "Email Name";
@@ -290,7 +290,7 @@ namespace FieldMapper.Tests
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
-        public void UniversalParser_PutMapping_ShouldThrowArgumentExceptionIfTryingToAddDuplicateKey()
+        public void FieldMapperTests_PutMapping_ShouldThrowArgumentExceptionIfTryingToAddDuplicateKey()
         {
             // Arrange
             string key = "First Name:";

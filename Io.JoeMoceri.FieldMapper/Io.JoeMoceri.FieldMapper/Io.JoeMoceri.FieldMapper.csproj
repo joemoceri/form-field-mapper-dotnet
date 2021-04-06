@@ -6,6 +6,10 @@
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/jmoceri34/field-mapper</PackageProjectUrl>
     <PackageIcon>icon.png</PackageIcon>
+    <Authors>Joe Moceri</Authors>
+    <Description>Field Mapper is a mapping tool built for C# .NET to parse a given string into key / value pairs using the keys as markers to identify values. Please see github repository for examples.</Description>
+    <RepositoryUrl>https://github.com/jmoceri34/field-mapper</RepositoryUrl>
+    <PackageTags>parsing, mapping, csharp, net, string parsing, email</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>

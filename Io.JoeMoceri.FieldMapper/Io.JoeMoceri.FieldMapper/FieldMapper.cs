@@ -14,23 +14,29 @@ namespace FieldMapper
         {
             if (string.IsNullOrWhiteSpace(content))
             {
-                throw new ArgumentException("Content cannot be null or empty", nameof(content));
+                throw new ArgumentException("Content cannot be null or empty.", nameof(content));
             }
-            if(mappings == null || mappings.Count() == 0)
+            if (mappings == null || mappings.Count() == 0)
             {
-                throw new ArgumentException("Mappings cannot be null or empty", nameof(mappings));
+                throw new ArgumentException("Mappings cannot be null or empty.", nameof(mappings));
             }
-            if(mappings.Any(m => string.IsNullOrWhiteSpace(m)))
+            if (mappings.Any(m => string.IsNullOrWhiteSpace(m)))
             {
-                throw new ArgumentException("Mappings cannot contain any empty values", nameof(mappings));
+                throw new ArgumentException("Mappings cannot contain any empty values.", nameof(mappings));
             }
+
+            if (mappings.Distinct().Count() != mappings.Count())
+            {
+                throw new ArgumentException("Duplicate mappings found. Please make sure they are all unique.");
+            }
+
             this.content = content;
             this.mappings = mappings;
         }
 
-        public IDictionary<string, object> Get()
+        public IDictionary<string, string> Get()
         {
-            var result = new Dictionary<string, object>();
+            var result = new Dictionary<string, string>();
 
             // Remove all line breaks first with spaces to ensure a clean separation
             content = content.Replace("\r\n", " ").Replace("\n", " ").Replace("\r", " ").Replace(Environment.NewLine, " ");

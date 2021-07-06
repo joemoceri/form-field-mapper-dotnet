@@ -3,9 +3,20 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31129.286
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Io.JoeMoceri.FieldMapper", "Io.JoeMoceri.FieldMapper\Io.JoeMoceri.FieldMapper.csproj", "{5CBA167B-4B05-4451-950C-86AB60859549}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FieldMapperForDotNet", "src\FieldMapperForDotNet\FieldMapperForDotNet.csproj", "{5CBA167B-4B05-4451-950C-86AB60859549}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Io.JoeMoceri.FieldMapper.Tests", "Io.JoeMoceri.FieldMapper.Tests\Io.JoeMoceri.FieldMapper.Tests.csproj", "{2FD85AB2-865A-4E07-BD22-C6E170DCE846}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FieldMapperForDotNet.Tests", "src\FieldMapperForDotNet.Tests\FieldMapperForDotNet.Tests.csproj", "{2FD85AB2-865A-4E07-BD22-C6E170DCE846}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FieldMapperForDotNet.Sample", "src\FieldMapperForDotNet.Sample\FieldMapperForDotNet.Sample.csproj", "{B84874BB-C9BB-427C-A755-27491B513F98}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "solution-items", "solution-items", "{8310DD08-CA64-4D90-B27D-0C0747DDC5E2}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		appveyor.yml = appveyor.yml
+		.github\workflows\dotnet.yml = .github\workflows\dotnet.yml
+		LICENSE = LICENSE
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +32,10 @@ Global
 		{2FD85AB2-865A-4E07-BD22-C6E170DCE846}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2FD85AB2-865A-4E07-BD22-C6E170DCE846}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2FD85AB2-865A-4E07-BD22-C6E170DCE846}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B84874BB-C9BB-427C-A755-27491B513F98}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B84874BB-C9BB-427C-A755-27491B513F98}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B84874BB-C9BB-427C-A755-27491B513F98}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B84874BB-C9BB-427C-A755-27491B513F98}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

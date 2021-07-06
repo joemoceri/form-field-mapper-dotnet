@@ -3,7 +3,7 @@
   <PropertyGroup>
     <OutputType>Library</OutputType>
     <TargetFramework>net5.0</TargetFramework>
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageLicenseExpression></PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/jmoceri34/field-mapper</PackageProjectUrl>
     <PackageIcon>icon.png</PackageIcon>
     <Authors>Joe Moceri</Authors>

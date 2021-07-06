@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Io.JoeMoceri.FieldMapper\Io.JoeMoceri.FieldMapper.csproj" />
+    <ProjectReference Include="..\FieldMapperForDotNet\FieldMapperForDotNet.csproj" />
   </ItemGroup>
 
 </Project>

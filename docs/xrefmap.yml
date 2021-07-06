@@ -1,0 +1,44 @@
+### YamlMime:XRefMap
+sorted: true
+references:
+- uid: FieldMapperForDotNet
+  name: FieldMapperForDotNet
+  href: api/FieldMapperForDotNet.html
+  commentId: N:FieldMapperForDotNet
+  fullName: FieldMapperForDotNet
+  nameWithType: FieldMapperForDotNet
+- uid: FieldMapperForDotNet.FieldMapper
+  name: FieldMapper
+  href: api/FieldMapperForDotNet.FieldMapper.html
+  commentId: T:FieldMapperForDotNet.FieldMapper
+  fullName: FieldMapperForDotNet.FieldMapper
+  nameWithType: FieldMapper
+- uid: FieldMapperForDotNet.FieldMapper.#ctor(System.String,System.Collections.Generic.IEnumerable{System.String})
+  name: FieldMapper(String, IEnumerable<String>)
+  href: api/FieldMapperForDotNet.FieldMapper.html#FieldMapperForDotNet_FieldMapper__ctor_System_String_System_Collections_Generic_IEnumerable_System_String__
+  commentId: M:FieldMapperForDotNet.FieldMapper.#ctor(System.String,System.Collections.Generic.IEnumerable{System.String})
+  name.vb: FieldMapper(String, IEnumerable(Of String))
+  fullName: FieldMapperForDotNet.FieldMapper.FieldMapper(System.String, System.Collections.Generic.IEnumerable<System.String>)
+  fullName.vb: FieldMapperForDotNet.FieldMapper.FieldMapper(System.String, System.Collections.Generic.IEnumerable(Of System.String))
+  nameWithType: FieldMapper.FieldMapper(String, IEnumerable<String>)
+  nameWithType.vb: FieldMapper.FieldMapper(String, IEnumerable(Of String))
+- uid: FieldMapperForDotNet.FieldMapper.#ctor*
+  name: FieldMapper
+  href: api/FieldMapperForDotNet.FieldMapper.html#FieldMapperForDotNet_FieldMapper__ctor_
+  commentId: Overload:FieldMapperForDotNet.FieldMapper.#ctor
+  isSpec: "True"
+  fullName: FieldMapperForDotNet.FieldMapper.FieldMapper
+  nameWithType: FieldMapper.FieldMapper
+- uid: FieldMapperForDotNet.FieldMapper.Get
+  name: Get()
+  href: api/FieldMapperForDotNet.FieldMapper.html#FieldMapperForDotNet_FieldMapper_Get
+  commentId: M:FieldMapperForDotNet.FieldMapper.Get
+  fullName: FieldMapperForDotNet.FieldMapper.Get()
+  nameWithType: FieldMapper.Get()
+- uid: FieldMapperForDotNet.FieldMapper.Get*
+  name: Get
+  href: api/FieldMapperForDotNet.FieldMapper.html#FieldMapperForDotNet_FieldMapper_Get_
+  commentId: Overload:FieldMapperForDotNet.FieldMapper.Get
+  isSpec: "True"
+  fullName: FieldMapperForDotNet.FieldMapper.Get
+  nameWithType: FieldMapper.Get

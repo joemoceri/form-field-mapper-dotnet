@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-namespace Io.JoeMoceri.FieldMapper
+namespace FieldMapperForDotNet
 {
+    /// <summary>
+    /// Field Mapper main class
+    /// </summary>
     public class FieldMapper
     {
         private string content;
@@ -34,6 +37,10 @@ namespace Io.JoeMoceri.FieldMapper
             this.mappings = mappings;
         }
 
+        /// <summary>
+        /// Get the dictionary result
+        /// </summary>
+        /// <returns>dictionary</returns>
         public IDictionary<string, string> Get()
         {
             var result = new Dictionary<string, string>();

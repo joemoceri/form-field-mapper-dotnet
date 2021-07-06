@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Io.JoeMoceri.FieldMapper.Tests
+namespace FieldMapperForDotNet.Tests
 {
     [TestClass]
     public class FieldMapperTests

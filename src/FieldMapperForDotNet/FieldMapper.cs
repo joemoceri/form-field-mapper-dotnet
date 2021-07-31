@@ -1,30 +1,119 @@
-﻿using System;
+﻿using HtmlAgilityPack;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace FieldMapperForDotNet
 {
-    /// <summary>
-    /// This is the main class for mapping field data from string content
-    /// </summary>
     public class FieldMapper
     {
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="content"></param>
-        /// <param name="mappings"></param>
-        /// <returns></returns>
-        public IDictionary<string, string> Get(string content, IEnumerable<string> mappings)
-        {
-            Validate();
+        private readonly FieldMapperConfiguration configuration;
 
-            var result = new Dictionary<string, string>();
+        public FieldMapper(): this(new FieldMapperConfiguration()) { }
+
+        public FieldMapper(FieldMapperConfiguration configuration)
+        {
+            this.configuration = configuration;
+        }
+
+        public string PreviewContent(string content, IEnumerable<string> mappings)
+        {
+            if (configuration.options.DeEntitizeContent)
+            {
+                var doc = new HtmlDocument();
+                doc.LoadHtml(content);
+
+                content = HtmlEntity.DeEntitize(doc.DocumentNode.InnerText);
+            }
+
+            if (configuration.options.SeparateByLineBreaks)
+            {
+                content = Regex.Replace(content, @"\s{5,}", Environment.NewLine);
+            }
 
             content = content.Replace("\r\n", " ").Replace("\n", " ").Replace("\r", " ").Replace(Environment.NewLine, " ");
 
             SeparateMappingsByLineBreaks();
+
+            return content;
+
+            void SeparateMappingsByLineBreaks()
+            {
+                foreach (var searchMapping in mappings)
+                {
+                    var startIndex = GetIndexOfKey(content, mappings, searchMapping);
+                    var nextLocation = int.MaxValue;
+
+                    if (!content.Contains(Environment.NewLine) && startIndex != -1)
+                    {
+                        content = content.Insert(startIndex, Environment.NewLine);
+                    }
+
+                    foreach (var key in mappings.Where(k => k != searchMapping))
+                    {
+                        var loc = content.IndexOf(key, startIndex + searchMapping.Length);
+
+                        if (loc != -1 && loc < nextLocation)
+                        {
+                            nextLocation = loc;
+                        }
+                    }
+
+                    if (nextLocation != int.MaxValue)
+                    {
+                        content = content.Insert(nextLocation, Environment.NewLine);
+                    }
+                }
+            }
+        }
+
+        private int GetIndexOfKey(string content, IEnumerable<string> mappings, string searchKey)
+        {
+            var nestedKey = false;
+            var nonSearchedKeys = mappings.Where(k => k != searchKey);
+
+            foreach (var key in nonSearchedKeys)
+            {
+                if (key.Contains(searchKey))
+                {
+                    nestedKey = true;
+                }
+            }
+
+            if (nestedKey)
+            {
+                var tempContent = content;
+
+                var orderedKeys = mappings.OrderByDescending(m => m.Length).ToList();
+                for (var i = 0; i < orderedKeys.Count(); i++)
+                {
+                    tempContent = tempContent.Replace(orderedKeys[i], orderedKeys[i].ToUpperInvariant());
+                }
+
+                var nonSearchedLargerKeys = nonSearchedKeys.Where(k => k.Length > searchKey.Length);
+
+                foreach (var key in nonSearchedLargerKeys)
+                {
+                    tempContent = tempContent.Replace(key.ToUpperInvariant(), key.ToLowerInvariant());
+                }
+
+                return tempContent.IndexOf(searchKey.ToUpperInvariant());
+            }
+            else
+            {
+                return content.IndexOf(searchKey);
+            }
+        }
+
+        public IDictionary<string, string> Get(string content, IEnumerable<string> mappings)
+        {
+            Validate();
+
+            content = PreviewContent(content, mappings);
+
+            var result = new Dictionary<string, string>();
 
             using (var reader = new StringReader(content))
             {
@@ -39,7 +128,7 @@ namespace FieldMapperForDotNet
                         if (line.Contains(mapping) && line.IndexOf(mapping) == 0)
                         {
                             var value = line.Substring(line.IndexOf(mapping) + mapping.Length).Trim();
-                            var startIndex = GetIndexOfKey(mapping);
+                            var startIndex = GetIndexOfKey(content, mappings, mapping);
 
                             var nextLineValue = GetMappingValueOnSubsequentLines(content.Substring(startIndex + line.Length));
                             
@@ -68,44 +157,6 @@ namespace FieldMapperForDotNet
             }
 
             return result;
-
-            int GetIndexOfKey(string searchKey)
-            {
-                var nestedKey = false;
-                var nonSearchedKeys = mappings.Where(k => k != searchKey);
-
-                foreach (var key in nonSearchedKeys)
-                {
-                    if (key.Contains(searchKey))
-                    {
-                        nestedKey = true;
-                    }
-                }
-
-                if (nestedKey)
-                {
-                    var tempContent = content;
-
-                    var orderedKeys = mappings.OrderByDescending(m => m.Length).ToList();
-                    for (var i = 0; i < orderedKeys.Count(); i++)
-                    {
-                        tempContent = tempContent.Replace(orderedKeys[i], orderedKeys[i].ToUpperInvariant());
-                    }
-
-                    var nonSearchedLargerKeys = nonSearchedKeys.Where(k => k.Length > searchKey.Length);
-
-                    foreach (var key in nonSearchedLargerKeys)
-                    {
-                        tempContent = tempContent.Replace(key.ToUpperInvariant(), key.ToLowerInvariant());
-                    }
-
-                    return tempContent.IndexOf(searchKey.ToUpperInvariant());
-                }
-                else
-                {
-                    return content.IndexOf(searchKey);
-                }
-            }
 
             string GetMappingValueOnSubsequentLines(string subContent)
             {
@@ -137,30 +188,6 @@ namespace FieldMapperForDotNet
                 return result.Trim(' ', '|');
             }
 
-            void SeparateMappingsByLineBreaks()
-            {
-                foreach (var searchMapping in mappings)
-                {
-                    var startIndex = GetIndexOfKey(searchMapping);
-                    var nextLocation = int.MaxValue;
-
-                    foreach (var key in mappings.Where(k => k != searchMapping))
-                    {
-                        var loc = content.IndexOf(key, startIndex + searchMapping.Length);
-
-                        if (loc != -1 && loc < nextLocation)
-                        {
-                            nextLocation = loc;
-                        }
-                    }
-
-                    if (nextLocation != int.MaxValue)
-                    {
-                        content = content.Insert(nextLocation, Environment.NewLine);
-                    }
-                }
-            }
-
             void Validate()
             {
                 if (string.IsNullOrWhiteSpace(content))
@@ -184,5 +211,6 @@ namespace FieldMapperForDotNet
                 }
             }
         }
+
     }
 }

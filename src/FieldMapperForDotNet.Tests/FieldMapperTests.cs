@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -8,6 +9,56 @@ namespace FieldMapperForDotNet.Tests
     [TestClass]
     public class FieldMapperTests
     {
+        [TestMethod]
+        [DeploymentItem("examples/WPFormsContactFormBody/plain-text-body")]
+        public void FieldMapperTests_WPFormsContactFormBody_PlainTextBody()
+        {
+            // Arrange
+            var content = File.ReadAllText("examples/WPFormsContactFormBody/plain-text-body");
+
+            var mappings = new List<string>();
+            mappings.Add("*Name*");
+            mappings.Add("*Email*");
+            mappings.Add("*Comment or Message*");
+            mappings.Add("Sent from joe's Blog!");
+
+            var fieldMapper = new FieldMapper();
+
+            // Act
+            var result = fieldMapper.Get(content, mappings);
+
+            // Assert
+            Assert.AreEqual(result["*Name*"], "Test Testing");
+            Assert.AreEqual(result["*Email*"], "joseph.thomas.moceri@gmail.com");
+            Assert.AreEqual(result["*Comment or Message*"], "Hi this is a test");
+            Assert.AreEqual(result["Sent from joe's Blog!"], string.Empty);
+        }
+
+        [TestMethod]
+        [DeploymentItem("examples/WPFormsContactFormBody/html-body")]
+        public void FieldMapperTests_WPFormsContactFormBody_HtmlBody()
+        {
+            // Arrange
+            var content = File.ReadAllText("examples/WPFormsContactFormBody/html-body");
+
+            var mappings = new List<string>();
+            mappings.Add("Name");
+            mappings.Add("Email");
+            mappings.Add("Comment or Message");
+            mappings.Add("Sent from joe's Blog!");
+
+            var fieldMapper = new FieldMapper();
+
+            // Act
+            var result = fieldMapper.Get(content, mappings);
+
+            // Assert
+            Assert.AreEqual(result["Name"], "Test Testing");
+            Assert.AreEqual(result["Email"], "joseph.thomas.moceri@gmail.com");
+            Assert.AreEqual(result["Comment or Message"], "Hi this is a test");
+            Assert.AreEqual(result["Sent from joe's Blog!"], string.Empty);
+        }
+
         [TestMethod]
         public void FieldMapperTests_NestedKeys_OnSameLine()
         {

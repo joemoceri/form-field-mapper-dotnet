@@ -6,7 +6,9 @@ namespace FieldMapperForDotNet.Sample
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var app = new App();
+
+            app.Run();
         }
     }
 }

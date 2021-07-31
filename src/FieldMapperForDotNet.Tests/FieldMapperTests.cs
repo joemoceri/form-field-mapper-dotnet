@@ -29,8 +29,8 @@ namespace FieldMapperForDotNet.Tests
             mappings.Add(zipKey);
 
             // Act
-            var parser = new FieldMapper(content, mappings);
-            var result = parser.Get();
+            var parser = new FieldMapper();
+            var result = parser.Get(content, mappings);
 
             // Assert
             Assert.AreEqual(emailValue, result[emailKey]);
@@ -51,8 +51,9 @@ namespace FieldMapperForDotNet.Tests
             mappings.Add(key);
 
             // Act
-            var parser = new FieldMapper(content, mappings);
-            var result = parser.Get();
+            // content, mappings
+            var parser = new FieldMapper();
+            var result = parser.Get(content, mappings);
 
             // Assert
             Assert.AreEqual(result.Count, 0);
@@ -70,8 +71,8 @@ namespace FieldMapperForDotNet.Tests
             mappings.Add(key);
 
             // Act
-            var parser = new FieldMapper(content, mappings);
-            var result = parser.Get();
+            var parser = new FieldMapper();
+            var result = parser.Get(content, mappings);
 
             // Assert
             Assert.AreEqual(result.Count, 0);
@@ -89,8 +90,8 @@ namespace FieldMapperForDotNet.Tests
             mappings.Add(key);
 
             // Act
-            var parser = new FieldMapper(content, mappings);
-            var result = parser.Get();
+            var parser = new FieldMapper();
+            var result = parser.Get(content, mappings);
 
             // Assert
             Assert.AreEqual(value, result[key]);
@@ -101,23 +102,26 @@ namespace FieldMapperForDotNet.Tests
         public void FieldMapperTests_Init_NullContent_ShouldThrowArgumentException()
         {
             IEnumerable<string> mappings = Enumerable.Empty<string>();
-            var parser = new FieldMapper(null, mappings);
+            var parser = new FieldMapper();
+            parser.Get(null, mappings);
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         public void FieldMapperTests_Init_EmptyContent_ShouldThrowArgumentException()
         {
-            IEnumerable<string> mappings = Enumerable.Empty<string>();
-            var parser = new FieldMapper("", mappings);
+            var mappings = Enumerable.Empty<string>();
+            var parser = new FieldMapper();
+            parser.Get("", mappings);
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         public void FieldMapperTests_Init_WhitespaceContent_ShouldThrowArgumentException()
         {
-            IEnumerable<string> mappings = Enumerable.Empty<string>();
-            var parser = new FieldMapper("     ", mappings);
+            var mappings = Enumerable.Empty<string>();
+            var parser = new FieldMapper();
+            parser.Get("     ", mappings);
         }
 
         [TestMethod]
@@ -125,7 +129,8 @@ namespace FieldMapperForDotNet.Tests
         public void FieldMapperTests_Init_NullKeys_ShouldThrowArgumentException()
         {
             var content = "First Name: Joe";
-            var parser = new FieldMapper(content, null);
+            var parser = new FieldMapper();
+            parser.Get(content, null);
         }
 
         [TestMethod]
@@ -133,8 +138,9 @@ namespace FieldMapperForDotNet.Tests
         public void FieldMapperTests_Init_EmptyKeys_ShouldThrowArgumentException()
         {
             var content = "First Name: Joe";
-            IEnumerable<string> mappings = Enumerable.Empty<string>();
-            var parser = new FieldMapper(content, mappings);
+            var mappings = Enumerable.Empty<string>();
+            var parser = new FieldMapper();
+            parser.Get(content, mappings);
         }
 
         [TestMethod]
@@ -145,7 +151,8 @@ namespace FieldMapperForDotNet.Tests
             mappings.Add("");
             var content = "First Name: Joe";
 
-            var parser = new FieldMapper(content, mappings);
+            var parser = new FieldMapper();
+            parser.Get(content, mappings);
         }
 
         [TestMethod]
@@ -156,7 +163,8 @@ namespace FieldMapperForDotNet.Tests
             mappings.Add("      ");
             var content = "First Name: Joe";
 
-            var parser = new FieldMapper(content, mappings);
+            var parser = new FieldMapper();
+            parser.Get(content, mappings);
         }
 
         [TestMethod]
@@ -171,8 +179,8 @@ namespace FieldMapperForDotNet.Tests
             mappings.Add(string.Format(key, " "));
 
             // Act
-            var parser = new FieldMapper(content, mappings);
-            var result = parser.Get();
+            var parser = new FieldMapper();
+            var result = parser.Get(content, mappings);
 
             // Assert
             Assert.AreEqual(value, result[string.Format(key, " ")]);
@@ -190,8 +198,8 @@ namespace FieldMapperForDotNet.Tests
             mappings.Add(string.Format(key, " "));
 
             // Act
-            var parser = new FieldMapper(content, mappings);
-            var result = parser.Get();
+            var parser = new FieldMapper();
+            var result = parser.Get(content, mappings);
 
             // Assert
             Assert.AreEqual(value, result[string.Format(key, " ")]);
@@ -209,8 +217,8 @@ namespace FieldMapperForDotNet.Tests
             mappings.Add(string.Format(key, " "));
 
             // Act
-            var parser = new FieldMapper(content, mappings);
-            var result = parser.Get();
+            var parser = new FieldMapper();
+            var result = parser.Get(content, mappings);
 
             // Assert
             Assert.AreEqual(value, result[string.Format(key, " ")]);
@@ -239,8 +247,8 @@ namespace FieldMapperForDotNet.Tests
             mappings.Add(phoneKey);
 
             // Act
-            var parser = new FieldMapper(content, mappings);
-            var result = parser.Get();
+            var parser = new FieldMapper();
+            var result = parser.Get(content, mappings);
 
             // Assert
             Assert.AreEqual(emailValue, result[emailKey]);
@@ -276,8 +284,8 @@ namespace FieldMapperForDotNet.Tests
             mappings.Add(addressKey);
 
             // Act
-            var parser = new FieldMapper(content, mappings);
-            var result = parser.Get();
+            var parser = new FieldMapper();
+            var result = parser.Get(content, mappings);
 
             // Assert
             Assert.AreEqual(emailValue, result[emailKey]);
@@ -304,8 +312,8 @@ namespace FieldMapperForDotNet.Tests
             mappings.Add(secondKey);
 
             // Act
-            var parser = new FieldMapper(content, mappings);
-            var result = parser.Get();
+            var parser = new FieldMapper();
+            var result = parser.Get(content, mappings);
 
             // Assert
             Assert.AreEqual(secondValue, result[key]);

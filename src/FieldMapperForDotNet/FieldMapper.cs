@@ -131,19 +131,10 @@ namespace FieldMapperForDotNet
                             var startIndex = GetIndexOfKey(content, mappings, mapping);
 
                             var nextLineValue = GetMappingValueOnSubsequentLines(content.Substring(startIndex + line.Length));
-                            
-                            if (nextLineValue != "")
-                            {
-                                value += " " + nextLineValue;
-                            }
 
                             value = value.Trim();
 
-                            if (result.ContainsKey(mapping))
-                            {
-                                result[mapping] = value;
-                            }
-                            else
+                            if (!result.ContainsKey(mapping))
                             {
                                 result.Add(mapping, value);
                             }
@@ -174,11 +165,6 @@ namespace FieldMapperForDotNet
                             {
                                 return result.Trim(' ', '|');
                             }
-                        }
-
-                        if (!string.IsNullOrWhiteSpace(line))
-                        {
-                            result += line + " | ";
                         }
 
                         line = reader.ReadLine();

@@ -7,17 +7,36 @@ using System.Text.RegularExpressions;
 
 namespace FieldMapperForDotNet
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class FieldMapper
     {
+        /// <summary>
+        /// 
+        /// </summary>
         private readonly FieldMapperConfiguration configuration;
 
+        /// <summary>
+        /// 
+        /// </summary>
         public FieldMapper(): this(new FieldMapperConfiguration()) { }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="configuration"></param>
         public FieldMapper(FieldMapperConfiguration configuration)
         {
             this.configuration = configuration;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="content"></param>
+        /// <param name="mappings"></param>
+        /// <returns></returns>
         public string PreviewContent(string content, IEnumerable<string> mappings)
         {
             if (configuration.options.DeEntitizeContent)
@@ -69,44 +88,12 @@ namespace FieldMapperForDotNet
             }
         }
 
-        private int GetIndexOfKey(string content, IEnumerable<string> mappings, string searchKey)
-        {
-            var nestedKey = false;
-            var nonSearchedKeys = mappings.Where(k => k != searchKey);
-
-            foreach (var key in nonSearchedKeys)
-            {
-                if (key.Contains(searchKey))
-                {
-                    nestedKey = true;
-                }
-            }
-
-            if (nestedKey)
-            {
-                var tempContent = content;
-
-                var orderedKeys = mappings.OrderByDescending(m => m.Length).ToList();
-                for (var i = 0; i < orderedKeys.Count(); i++)
-                {
-                    tempContent = tempContent.Replace(orderedKeys[i], orderedKeys[i].ToUpperInvariant());
-                }
-
-                var nonSearchedLargerKeys = nonSearchedKeys.Where(k => k.Length > searchKey.Length);
-
-                foreach (var key in nonSearchedLargerKeys)
-                {
-                    tempContent = tempContent.Replace(key.ToUpperInvariant(), key.ToLowerInvariant());
-                }
-
-                return tempContent.IndexOf(searchKey.ToUpperInvariant());
-            }
-            else
-            {
-                return content.IndexOf(searchKey);
-            }
-        }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="content"></param>
+        /// <param name="mappings"></param>
+        /// <returns></returns>
         public IDictionary<string, string> Get(string content, IEnumerable<string> mappings)
         {
             Validate();
@@ -198,5 +185,49 @@ namespace FieldMapperForDotNet
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="content"></param>
+        /// <param name="mappings"></param>
+        /// <param name="searchKey"></param>
+        /// <returns></returns>
+        private int GetIndexOfKey(string content, IEnumerable<string> mappings, string searchKey)
+        {
+            var nestedKey = false;
+            var nonSearchedKeys = mappings.Where(k => k != searchKey);
+
+            foreach (var key in nonSearchedKeys)
+            {
+                if (key.Contains(searchKey))
+                {
+                    nestedKey = true;
+                }
+            }
+
+            if (nestedKey)
+            {
+                var tempContent = content;
+
+                var orderedKeys = mappings.OrderByDescending(m => m.Length).ToList();
+                for (var i = 0; i < orderedKeys.Count(); i++)
+                {
+                    tempContent = tempContent.Replace(orderedKeys[i], orderedKeys[i].ToUpperInvariant());
+                }
+
+                var nonSearchedLargerKeys = nonSearchedKeys.Where(k => k.Length > searchKey.Length);
+
+                foreach (var key in nonSearchedLargerKeys)
+                {
+                    tempContent = tempContent.Replace(key.ToUpperInvariant(), key.ToLowerInvariant());
+                }
+
+                return tempContent.IndexOf(searchKey.ToUpperInvariant());
+            }
+            else
+            {
+                return content.IndexOf(searchKey);
+            }
+        }
     }
 }

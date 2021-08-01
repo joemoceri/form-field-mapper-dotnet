@@ -77,10 +77,23 @@
 <h4 id="description">Description</h4>
 <p>To see these in action, check out the <a href="https://github.com/joemoceri/field-mapper-dotnet/tree/main/src/FieldMapperForDotNet.Tests">Tests Project</a> and <a href="https://github.com/joemoceri/field-mapper-dotnet/tree/main/src/FieldMapperForDotNet.Sample">Sample Project</a>.</p>
 <h4 id="field-mapper">Field Mapper</h4>
-<p>Map values out of a given string.</p>
-<pre><code class="lang-csharp">public void Example()
+<p>Map a first name out of a given string.</p>
+<pre><code class="lang-csharp">public void MapFirstName()
 {
+    // Arrange
+    string key = &quot;First Name:&quot;;
+    string value = &quot;Joe&quot;;
 
+    var content = $&quot;{key} {value}&quot;;
+    var mappings = new List&lt;string&gt;();
+    mappings.Add(key);
+
+    // Act
+    var parser = new FieldMapper();
+    var result = parser.Get(content, mappings);
+
+    // Assert
+    Assert.AreEqual(value, result[key]);
 }
 </code></pre>
 </article>

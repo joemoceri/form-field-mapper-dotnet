@@ -10,11 +10,24 @@ To see these in action, check out the [Tests Project](https://github.com/joemoce
 
 #### Field Mapper
 
-Map values out of a given string.
+Map a first name out of a given string.
 
 ```csharp
-public void Example()
+public void MapFirstName()
 {
+    // Arrange
+    string key = "First Name:";
+    string value = "Joe";
 
+    var content = $"{key} {value}";
+    var mappings = new List<string>();
+    mappings.Add(key);
+
+    // Act
+    var parser = new FieldMapper();
+    var result = parser.Get(content, mappings);
+
+    // Assert
+    Assert.AreEqual(value, result[key]);
 }
 ```

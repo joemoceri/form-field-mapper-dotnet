@@ -4,6 +4,9 @@
   "xrefmap": "xrefmap.yml",
   "files": [
     {
+      "log_codes": [
+        "DuplicateUids"
+      ],
       "type": "ManagedReference",
       "source_relative_path": "api/FieldMapperForDotNet.FieldMapper.yml",
       "output": {
@@ -48,16 +51,13 @@
       "output": {
         ".html": {
           "relative_path": "api/FieldMapperForDotNet.html",
-          "hash": "lvGTq4hloszGnQSRgsfhh9xCGP4TwHOlcFoNPODNPCM="
+          "hash": "z9AciqKO654EA3CNCGU1qAaXPMpt8CqZ2aVKxjkdcvI="
         }
       },
       "is_incremental": true,
       "version": ""
     },
     {
-      "log_codes": [
-        "DuplicateUids"
-      ],
       "type": "ManagedReference",
       "source_relative_path": "api/Io.JoeMoceri.FieldMapper.FieldMapper.yml",
       "output": {
@@ -75,7 +75,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Io.JoeMoceri.FieldMapper.html",
-          "hash": "ELWi8xJwwHsjMfBkSrSTSZSR/CUyXwjFJ+lf8fGjuuc="
+          "hash": "caYIS1/FsGBoBFdM4Nlb9enwZxNNkZ3yn2WIle8Uu/I="
         }
       },
       "is_incremental": true,
@@ -90,7 +90,7 @@
           "hash": "DG4oVFNun0Ov6QJdqWiYg0wVxBSCJ/1EEmsI55E4CbI="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -123,19 +123,22 @@
       "output": {
         ".html": {
           "relative_path": "articles/Examples.html",
-          "hash": "4zWfv/U/ycMv3HDDYgLOyzzu7GMUpmU2QL1aU2eOIsw="
+          "hash": "SRa5am8cTHdATFm8geB0KsaTxLXVWsY2/pg8j7BAcwE="
         }
       },
       "is_incremental": true,
       "version": ""
     },
     {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
       "type": "Conceptual",
       "source_relative_path": "articles/FieldMapper.md",
       "output": {
         ".html": {
           "relative_path": "articles/FieldMapper.html",
-          "hash": "34sMS6ef1BtnwxdIg1pUTJkEvYvKUw4TxxdAlN0Cb9M="
+          "hash": "aqHHeGB784NXtd5UxELtzJtuf/+Ba3uDqzdkvNlYJFQ="
         }
       },
       "is_incremental": true,
@@ -162,7 +165,7 @@
           "hash": "jsehnRDgHK8xwmWZRTYIn10AWZvSsPz8snK7QVfVlHU="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -174,7 +177,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/Overview.html",
-          "hash": "obG6thNu9m0SSI1/ZWJSfwB1+uGhMxkJzjQAVOBXAQI="
+          "hash": "lP6vbQdHI7BSowRzYrLV7srGq1N+X6xPAqZRHM4Bi6M="
         }
       },
       "is_incremental": true,
@@ -262,7 +265,7 @@
           "hash": "YBlqpWhXtN7xuc9cVdKV7xsQ4WhFRS0n9h+q0RLCS8s="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -291,7 +294,7 @@
           "can_incremental": true,
           "incrementalPhase": "build",
           "total_file_count": 11,
-          "skipped_file_count": 8
+          "skipped_file_count": 11
         },
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": true,

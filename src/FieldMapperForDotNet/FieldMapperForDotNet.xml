@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>FieldMapperForDotNet</name>
+    </assembly>
+    <members>
+        <member name="T:FieldMapperForDotNet.FieldMapper">
+            <summary>
+            This is the main class used for mapping fields
+            </summary>
+        </member>
+        <member name="F:FieldMapperForDotNet.FieldMapper.configuration">
+            <summary>
+            The configuration holds options that can change the behavior of the tool, such as choosing whether to DeEntitize the content first.
+            </summary>
+        </member>
+        <member name="M:FieldMapperForDotNet.FieldMapper.#ctor">
+            <summary>
+            By default it uses <see cref="T:FieldMapperForDotNet.FieldMapperConfiguration"/>
+            </summary>
+        </member>
+        <member name="M:FieldMapperForDotNet.FieldMapper.#ctor(FieldMapperForDotNet.FieldMapperConfiguration)">
+            <summary>
+            You can pass in your own <see cref="T:FieldMapperForDotNet.FieldMapperConfiguration"/>
+            </summary>
+            <param name="configuration"></param>
+        </member>
+        <member name="M:FieldMapperForDotNet.FieldMapper.PreviewContent(System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Use this to see what the mappings should look like before they're mapped to values.
+            </summary>
+            <param name="content">The string content.</param>
+            <param name="mappings">The mappings to apply to the content.</param>
+            <returns></returns>
+        </member>
+        <member name="M:FieldMapperForDotNet.FieldMapper.Get(System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            This is the main method for getting values out of a string with mappings.
+            </summary>
+            <param name="content">The string content.</param>
+            <param name="mappings">The mappings.</param>
+            <returns></returns>
+        </member>
+        <member name="M:FieldMapperForDotNet.FieldMapper.GetIndexOfKey(System.String,System.Collections.Generic.IEnumerable{System.String},System.String)">
+            <summary>
+            Internal method used to handle various mapping issues when trying to retrieve the right index
+            </summary>
+            <param name="content">The string content.</param>
+            <param name="mappings">The mappings.</param>
+            <param name="searchKey">The mapping it is looking for.</param>
+            <returns></returns>
+        </member>
+        <member name="T:FieldMapperForDotNet.FieldMapperConfiguration">
+            <summary>
+            Use this class to customize the behavior of the field mapper.
+            </summary>
+        </member>
+        <member name="F:FieldMapperForDotNet.FieldMapperConfiguration.options">
+            <summary>
+            You can modify the options to change how the field mapper works when running <see cref="M:FieldMapperForDotNet.FieldMapper.Get(System.String,System.Collections.Generic.IEnumerable{System.String})"/>
+            </summary>
+        </member>
+        <member name="M:FieldMapperForDotNet.FieldMapperConfiguration.#ctor">
+            <summary>
+            By default initalizes the options with <see cref="P:FieldMapperForDotNet.FieldMapperConfigurationOptions.DeEntitizeContent"/> as true and <see cref="P:FieldMapperForDotNet.FieldMapperConfigurationOptions.SeparateByLineBreaks"/> as true.
+            </summary>
+        </member>
+        <member name="T:FieldMapperForDotNet.FieldMapperConfigurationOptions">
+            <summary>
+            These are the options used in the configuration for the field mapper. Use them to customize the behavior of the field mapper.
+            </summary>
+        </member>
+        <member name="P:FieldMapperForDotNet.FieldMapperConfigurationOptions.DeEntitizeContent">
+            <summary>
+            This will DeEntitize the content by stripping all html and other relevant characters. If you're pulling plain-text, you can set this to false most likely. If you're pulling html strings, you may want it true.
+            </summary>
+        </member>
+        <member name="P:FieldMapperForDotNet.FieldMapperConfigurationOptions.SeparateByLineBreaks">
+            <summary>
+            This keeps everything clean, recommend leaving as true
+            </summary>
+        </member>
+    </members>
+</doc>

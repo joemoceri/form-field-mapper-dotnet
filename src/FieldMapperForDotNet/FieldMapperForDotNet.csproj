@@ -4,17 +4,29 @@
     <OutputType>Library</OutputType>
     <TargetFramework>net5.0</TargetFramework>
     <PackageLicenseExpression></PackageLicenseExpression>
-    <PackageProjectUrl>https://github.com/jmoceri34/field-mapper</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/joemoceri/field-mapper-dotnet</PackageProjectUrl>
     <PackageIcon>icon.png</PackageIcon>
     <Authors>Joe Moceri</Authors>
-    <Description>Field Mapper is a mapping tool built for C# .NET to parse a given string into key / value pairs using the keys as markers to identify values. Please see github repository for examples.</Description>
-    <RepositoryUrl>https://github.com/jmoceri34/field-mapper</RepositoryUrl>
-    <PackageTags>parsing, mapping, csharp, net, string parsing, email</PackageTags>
+    <Description>Field Mapper for .NET is a mapping library that can parse a given string into key / value pairs using the keys as markers to identify values.</Description>
+    <RepositoryUrl>https://github.com/joemoceri/field-mapper-dotnet</RepositoryUrl>
+    <PackageTags>parsing, mapping, csharp, net, string parsing, email, forms, form fields, fields, mapping, utilities, tools, libraries, library</PackageTags>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+	  <IncludeSymbols>true</IncludeSymbols>
+	  <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>$(MSBuildThisFileDirectory)\bin\$(Configuration)\$(TargetFramework)\FieldMapperForDotNet.xml</DocumentationFile>
+	<NoWarn>1701;1702;1591</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
     <None Remove="log.txt" />
+    <None Include="..\..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
   <ItemGroup>

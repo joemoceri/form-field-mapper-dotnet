@@ -10,45 +10,54 @@ namespace FieldMapperForDotNet.Tests
     public class FieldMapperTests
     {
         [TestMethod]
-        [DeploymentItem("examples/NinjaForms/plain-text-body")]
-        public void FieldMapperTests_NinjaForms_PlainTextBody()
-        {
-
-        }
-
-        [TestMethod]
-        [DeploymentItem("examples/NinjaForms/html-body")]
-        public void FieldMapperTests_NinjaForms_HtmlBody()
-        {
-
-        }
-
-        [TestMethod]
-        [DeploymentItem("examples/Forminator/plain-text-body")]
-        public void FieldMapperTests_Forminator_PlainTextBody()
-        {
-
-        }
-
-        [TestMethod]
-        [DeploymentItem("examples/Forminator/html-body")]
-        public void FieldMapperTests_Forminator_HtmlBody()
-        {
-
-        }
-
-        [TestMethod]
         [DeploymentItem("examples/ContactForm7/plain-text-body")]
         public void FieldMapperTests_ContactForm7_PlainTextBody()
         {
+            // Arrange
+            var content = File.ReadAllText("examples/ContactForm7/plain-text-body");
 
+            var mappings = new List<string>();
+            mappings.Add("From:");
+            mappings.Add("Subject:");
+            mappings.Add("Message Body:");
+            mappings.Add(@"--"); // format the email to handle duplicate cases when necessary
+
+            var configuration = new FieldMapperConfiguration();
+            configuration.options.DeEntitizeContent = false;
+
+            var fieldMapper = new FieldMapper(configuration);
+
+            // Act
+            var result = fieldMapper.Get(content, mappings);
+
+            // Assert
+            Assert.AreEqual(result["From:"], "Test Name <test@email.com>");
+            Assert.AreEqual(result["Subject:"], "This is a test subject");
+            Assert.AreEqual(result["Message Body:"], "Test message");
         }
 
         [TestMethod]
         [DeploymentItem("examples/ContactForm7/html-body")]
         public void FieldMapperTests_ContactForm7_HtmlBody()
         {
+            // Arrange
+            var content = File.ReadAllText("examples/ContactForm7/html-body");
 
+            var mappings = new List<string>();
+            mappings.Add("From:");
+            mappings.Add("Subject:");
+            mappings.Add("Message Body:");
+            mappings.Add(@"--"); // format the email to handle duplicate cases when necessary
+
+            var fieldMapper = new FieldMapper();
+
+            // Act
+            var result = fieldMapper.Get(content, mappings);
+
+            // Assert
+            Assert.AreEqual(result["From:"], "Test 2");
+            Assert.AreEqual(result["Subject:"], "Test subject 2");
+            Assert.AreEqual(result["Message Body:"], "This is a html message");
         }
 
         [TestMethod]

@@ -13,9 +13,21 @@ references:
   commentId: T:FieldMapperForDotNet.FieldMapper
   fullName: FieldMapperForDotNet.FieldMapper
   nameWithType: FieldMapper
+- uid: FieldMapperForDotNet.FieldMapper.#ctor
+  name: FieldMapper()
+  href: api/FieldMapperForDotNet.FieldMapper.html#FieldMapperForDotNet_FieldMapper__ctor
+  commentId: M:FieldMapperForDotNet.FieldMapper.#ctor
+  fullName: FieldMapperForDotNet.FieldMapper.FieldMapper()
+  nameWithType: FieldMapper.FieldMapper()
+- uid: FieldMapperForDotNet.FieldMapper.#ctor(FieldMapperForDotNet.FieldMapperConfiguration)
+  name: FieldMapper(FieldMapperConfiguration)
+  href: api/FieldMapperForDotNet.FieldMapper.html#FieldMapperForDotNet_FieldMapper__ctor_FieldMapperForDotNet_FieldMapperConfiguration_
+  commentId: M:FieldMapperForDotNet.FieldMapper.#ctor(FieldMapperForDotNet.FieldMapperConfiguration)
+  fullName: FieldMapperForDotNet.FieldMapper.FieldMapper(FieldMapperForDotNet.FieldMapperConfiguration)
+  nameWithType: FieldMapper.FieldMapper(FieldMapperConfiguration)
 - uid: FieldMapperForDotNet.FieldMapper.#ctor(System.String,System.Collections.Generic.IEnumerable{System.String})
   name: FieldMapper(String, IEnumerable<String>)
-  href: api/FieldMapperForDotNet.FieldMapper.html#FieldMapperForDotNet_FieldMapper__ctor_System_String_System_Collections_Generic_IEnumerable_System_String__
+  href: api/Io.JoeMoceri.FieldMapper.FieldMapper.html#FieldMapperForDotNet_FieldMapper__ctor_System_String_System_Collections_Generic_IEnumerable_System_String__
   commentId: M:FieldMapperForDotNet.FieldMapper.#ctor(System.String,System.Collections.Generic.IEnumerable{System.String})
   name.vb: FieldMapper(String, IEnumerable(Of String))
   fullName: FieldMapperForDotNet.FieldMapper.FieldMapper(System.String, System.Collections.Generic.IEnumerable<System.String>)
@@ -31,10 +43,19 @@ references:
   nameWithType: FieldMapper.FieldMapper
 - uid: FieldMapperForDotNet.FieldMapper.Get
   name: Get()
-  href: api/FieldMapperForDotNet.FieldMapper.html#FieldMapperForDotNet_FieldMapper_Get
+  href: api/Io.JoeMoceri.FieldMapper.FieldMapper.html#FieldMapperForDotNet_FieldMapper_Get
   commentId: M:FieldMapperForDotNet.FieldMapper.Get
   fullName: FieldMapperForDotNet.FieldMapper.Get()
   nameWithType: FieldMapper.Get()
+- uid: FieldMapperForDotNet.FieldMapper.Get(System.String,System.Collections.Generic.IEnumerable{System.String})
+  name: Get(String, IEnumerable<String>)
+  href: api/FieldMapperForDotNet.FieldMapper.html#FieldMapperForDotNet_FieldMapper_Get_System_String_System_Collections_Generic_IEnumerable_System_String__
+  commentId: M:FieldMapperForDotNet.FieldMapper.Get(System.String,System.Collections.Generic.IEnumerable{System.String})
+  name.vb: Get(String, IEnumerable(Of String))
+  fullName: FieldMapperForDotNet.FieldMapper.Get(System.String, System.Collections.Generic.IEnumerable<System.String>)
+  fullName.vb: FieldMapperForDotNet.FieldMapper.Get(System.String, System.Collections.Generic.IEnumerable(Of System.String))
+  nameWithType: FieldMapper.Get(String, IEnumerable<String>)
+  nameWithType.vb: FieldMapper.Get(String, IEnumerable(Of String))
 - uid: FieldMapperForDotNet.FieldMapper.Get*
   name: Get
   href: api/FieldMapperForDotNet.FieldMapper.html#FieldMapperForDotNet_FieldMapper_Get_
@@ -42,3 +63,76 @@ references:
   isSpec: "True"
   fullName: FieldMapperForDotNet.FieldMapper.Get
   nameWithType: FieldMapper.Get
+- uid: FieldMapperForDotNet.FieldMapper.PreviewContent(System.String,System.Collections.Generic.IEnumerable{System.String})
+  name: PreviewContent(String, IEnumerable<String>)
+  href: api/FieldMapperForDotNet.FieldMapper.html#FieldMapperForDotNet_FieldMapper_PreviewContent_System_String_System_Collections_Generic_IEnumerable_System_String__
+  commentId: M:FieldMapperForDotNet.FieldMapper.PreviewContent(System.String,System.Collections.Generic.IEnumerable{System.String})
+  name.vb: PreviewContent(String, IEnumerable(Of String))
+  fullName: FieldMapperForDotNet.FieldMapper.PreviewContent(System.String, System.Collections.Generic.IEnumerable<System.String>)
+  fullName.vb: FieldMapperForDotNet.FieldMapper.PreviewContent(System.String, System.Collections.Generic.IEnumerable(Of System.String))
+  nameWithType: FieldMapper.PreviewContent(String, IEnumerable<String>)
+  nameWithType.vb: FieldMapper.PreviewContent(String, IEnumerable(Of String))
+- uid: FieldMapperForDotNet.FieldMapper.PreviewContent*
+  name: PreviewContent
+  href: api/FieldMapperForDotNet.FieldMapper.html#FieldMapperForDotNet_FieldMapper_PreviewContent_
+  commentId: Overload:FieldMapperForDotNet.FieldMapper.PreviewContent
+  isSpec: "True"
+  fullName: FieldMapperForDotNet.FieldMapper.PreviewContent
+  nameWithType: FieldMapper.PreviewContent
+- uid: FieldMapperForDotNet.FieldMapperConfiguration
+  name: FieldMapperConfiguration
+  href: api/FieldMapperForDotNet.FieldMapperConfiguration.html
+  commentId: T:FieldMapperForDotNet.FieldMapperConfiguration
+  fullName: FieldMapperForDotNet.FieldMapperConfiguration
+  nameWithType: FieldMapperConfiguration
+- uid: FieldMapperForDotNet.FieldMapperConfiguration.#ctor
+  name: FieldMapperConfiguration()
+  href: api/FieldMapperForDotNet.FieldMapperConfiguration.html#FieldMapperForDotNet_FieldMapperConfiguration__ctor
+  commentId: M:FieldMapperForDotNet.FieldMapperConfiguration.#ctor
+  fullName: FieldMapperForDotNet.FieldMapperConfiguration.FieldMapperConfiguration()
+  nameWithType: FieldMapperConfiguration.FieldMapperConfiguration()
+- uid: FieldMapperForDotNet.FieldMapperConfiguration.#ctor*
+  name: FieldMapperConfiguration
+  href: api/FieldMapperForDotNet.FieldMapperConfiguration.html#FieldMapperForDotNet_FieldMapperConfiguration__ctor_
+  commentId: Overload:FieldMapperForDotNet.FieldMapperConfiguration.#ctor
+  isSpec: "True"
+  fullName: FieldMapperForDotNet.FieldMapperConfiguration.FieldMapperConfiguration
+  nameWithType: FieldMapperConfiguration.FieldMapperConfiguration
+- uid: FieldMapperForDotNet.FieldMapperConfiguration.options
+  name: options
+  href: api/FieldMapperForDotNet.FieldMapperConfiguration.html#FieldMapperForDotNet_FieldMapperConfiguration_options
+  commentId: F:FieldMapperForDotNet.FieldMapperConfiguration.options
+  fullName: FieldMapperForDotNet.FieldMapperConfiguration.options
+  nameWithType: FieldMapperConfiguration.options
+- uid: FieldMapperForDotNet.FieldMapperConfigurationOptions
+  name: FieldMapperConfigurationOptions
+  href: api/FieldMapperForDotNet.FieldMapperConfigurationOptions.html
+  commentId: T:FieldMapperForDotNet.FieldMapperConfigurationOptions
+  fullName: FieldMapperForDotNet.FieldMapperConfigurationOptions
+  nameWithType: FieldMapperConfigurationOptions
+- uid: FieldMapperForDotNet.FieldMapperConfigurationOptions.DeEntitizeContent
+  name: DeEntitizeContent
+  href: api/FieldMapperForDotNet.FieldMapperConfigurationOptions.html#FieldMapperForDotNet_FieldMapperConfigurationOptions_DeEntitizeContent
+  commentId: P:FieldMapperForDotNet.FieldMapperConfigurationOptions.DeEntitizeContent
+  fullName: FieldMapperForDotNet.FieldMapperConfigurationOptions.DeEntitizeContent
+  nameWithType: FieldMapperConfigurationOptions.DeEntitizeContent
+- uid: FieldMapperForDotNet.FieldMapperConfigurationOptions.DeEntitizeContent*
+  name: DeEntitizeContent
+  href: api/FieldMapperForDotNet.FieldMapperConfigurationOptions.html#FieldMapperForDotNet_FieldMapperConfigurationOptions_DeEntitizeContent_
+  commentId: Overload:FieldMapperForDotNet.FieldMapperConfigurationOptions.DeEntitizeContent
+  isSpec: "True"
+  fullName: FieldMapperForDotNet.FieldMapperConfigurationOptions.DeEntitizeContent
+  nameWithType: FieldMapperConfigurationOptions.DeEntitizeContent
+- uid: FieldMapperForDotNet.FieldMapperConfigurationOptions.SeparateByLineBreaks
+  name: SeparateByLineBreaks
+  href: api/FieldMapperForDotNet.FieldMapperConfigurationOptions.html#FieldMapperForDotNet_FieldMapperConfigurationOptions_SeparateByLineBreaks
+  commentId: P:FieldMapperForDotNet.FieldMapperConfigurationOptions.SeparateByLineBreaks
+  fullName: FieldMapperForDotNet.FieldMapperConfigurationOptions.SeparateByLineBreaks
+  nameWithType: FieldMapperConfigurationOptions.SeparateByLineBreaks
+- uid: FieldMapperForDotNet.FieldMapperConfigurationOptions.SeparateByLineBreaks*
+  name: SeparateByLineBreaks
+  href: api/FieldMapperForDotNet.FieldMapperConfigurationOptions.html#FieldMapperForDotNet_FieldMapperConfigurationOptions_SeparateByLineBreaks_
+  commentId: Overload:FieldMapperForDotNet.FieldMapperConfigurationOptions.SeparateByLineBreaks
+  isSpec: "True"
+  fullName: FieldMapperForDotNet.FieldMapperConfigurationOptions.SeparateByLineBreaks
+  nameWithType: FieldMapperConfigurationOptions.SeparateByLineBreaks

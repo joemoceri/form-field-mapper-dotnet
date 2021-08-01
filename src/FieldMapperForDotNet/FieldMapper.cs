@@ -8,22 +8,22 @@ using System.Text.RegularExpressions;
 namespace FieldMapperForDotNet
 {
     /// <summary>
-    /// 
+    /// This is the main class used for mapping fields
     /// </summary>
     public class FieldMapper
     {
         /// <summary>
-        /// 
+        /// The configuration holds options that can change the behavior of the tool, such as choosing whether to DeEntitize the content first.
         /// </summary>
         private readonly FieldMapperConfiguration configuration;
 
         /// <summary>
-        /// 
+        /// By default it uses <see cref="FieldMapperConfiguration"/>
         /// </summary>
         public FieldMapper(): this(new FieldMapperConfiguration()) { }
 
         /// <summary>
-        /// 
+        /// You can pass in your own <see cref="FieldMapperConfiguration"/>
         /// </summary>
         /// <param name="configuration"></param>
         public FieldMapper(FieldMapperConfiguration configuration)
@@ -32,10 +32,10 @@ namespace FieldMapperForDotNet
         }
 
         /// <summary>
-        /// 
+        /// Use this to see what the mappings should look like before they're mapped to values.
         /// </summary>
-        /// <param name="content"></param>
-        /// <param name="mappings"></param>
+        /// <param name="content">The string content.</param>
+        /// <param name="mappings">The mappings to apply to the content.</param>
         /// <returns></returns>
         public string PreviewContent(string content, IEnumerable<string> mappings)
         {
@@ -89,10 +89,10 @@ namespace FieldMapperForDotNet
         }
 
         /// <summary>
-        /// 
+        /// This is the main method for getting values out of a string with mappings.
         /// </summary>
-        /// <param name="content"></param>
-        /// <param name="mappings"></param>
+        /// <param name="content">The string content.</param>
+        /// <param name="mappings">The mappings.</param>
         /// <returns></returns>
         public IDictionary<string, string> Get(string content, IEnumerable<string> mappings)
         {
@@ -186,11 +186,11 @@ namespace FieldMapperForDotNet
         }
 
         /// <summary>
-        /// 
+        /// Internal method used to handle various mapping issues when trying to retrieve the right index
         /// </summary>
-        /// <param name="content"></param>
-        /// <param name="mappings"></param>
-        /// <param name="searchKey"></param>
+        /// <param name="content">The string content.</param>
+        /// <param name="mappings">The mappings.</param>
+        /// <param name="searchKey">The mapping it is looking for.</param>
         /// <returns></returns>
         private int GetIndexOfKey(string content, IEnumerable<string> mappings, string searchKey)
         {

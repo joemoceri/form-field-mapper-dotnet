@@ -73,7 +73,7 @@
   
   <h1 id="FieldMapperForDotNet_FieldMapper" data-uid="FieldMapperForDotNet.FieldMapper" class="text-break">Class FieldMapper
   </h1>
-  <div class="markdown level0 summary"><p>Field Mapper main class</p>
+  <div class="markdown level0 summary"><p>This is the main class used for mapping fields</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
@@ -115,18 +115,70 @@
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/joemoceri/field-mapper-dotnet/new/master/apiSpec/new?filename=FieldMapperForDotNet_FieldMapper__ctor_System_String_System_Collections_Generic_IEnumerable_System_String__.md&amp;value=---%0Auid%3A%20FieldMapperForDotNet.FieldMapper.%23ctor(System.String%2CSystem.Collections.Generic.IEnumerable%7BSystem.String%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/joemoceri/field-mapper-dotnet/new/main/apiSpec/new?filename=FieldMapperForDotNet_FieldMapper__ctor.md&amp;value=---%0Auid%3A%20FieldMapperForDotNet.FieldMapper.%23ctor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/joemoceri/field-mapper-dotnet/blob/master/src/FieldMapperForDotNet/FieldMapper.cs/#L16">View Source</a>
+    <a href="https://github.com/joemoceri/field-mapper-dotnet/blob/main/src/FieldMapperForDotNet/FieldMapper.cs/#L23">View Source</a>
   </span>
   <a id="FieldMapperForDotNet_FieldMapper__ctor_" data-uid="FieldMapperForDotNet.FieldMapper.#ctor*"></a>
-  <h4 id="FieldMapperForDotNet_FieldMapper__ctor_System_String_System_Collections_Generic_IEnumerable_System_String__" data-uid="FieldMapperForDotNet.FieldMapper.#ctor(System.String,System.Collections.Generic.IEnumerable{System.String})">FieldMapper(String, IEnumerable&lt;String&gt;)</h4>
-  <div class="markdown level1 summary"></div>
+  <h4 id="FieldMapperForDotNet_FieldMapper__ctor" data-uid="FieldMapperForDotNet.FieldMapper.#ctor">FieldMapper()</h4>
+  <div class="markdown level1 summary"><p>By default it uses <a class="xref" href="FieldMapperForDotNet.FieldMapperConfiguration.html">FieldMapperConfiguration</a></p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public FieldMapper(string content, IEnumerable&lt;string&gt; mappings)</code></pre>
+    <pre><code class="lang-csharp hljs">public FieldMapper()</code></pre>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/joemoceri/field-mapper-dotnet/new/main/apiSpec/new?filename=FieldMapperForDotNet_FieldMapper__ctor_FieldMapperForDotNet_FieldMapperConfiguration_.md&amp;value=---%0Auid%3A%20FieldMapperForDotNet.FieldMapper.%23ctor(FieldMapperForDotNet.FieldMapperConfiguration)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/joemoceri/field-mapper-dotnet/blob/main/src/FieldMapperForDotNet/FieldMapper.cs/#L29">View Source</a>
+  </span>
+  <a id="FieldMapperForDotNet_FieldMapper__ctor_" data-uid="FieldMapperForDotNet.FieldMapper.#ctor*"></a>
+  <h4 id="FieldMapperForDotNet_FieldMapper__ctor_FieldMapperForDotNet_FieldMapperConfiguration_" data-uid="FieldMapperForDotNet.FieldMapper.#ctor(FieldMapperForDotNet.FieldMapperConfiguration)">FieldMapper(FieldMapperConfiguration)</h4>
+  <div class="markdown level1 summary"><p>You can pass in your own <a class="xref" href="FieldMapperForDotNet.FieldMapperConfiguration.html">FieldMapperConfiguration</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public FieldMapper(FieldMapperConfiguration configuration)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="FieldMapperForDotNet.FieldMapperConfiguration.html">FieldMapperConfiguration</a></td>
+        <td><span class="parametername">configuration</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/joemoceri/field-mapper-dotnet/new/main/apiSpec/new?filename=FieldMapperForDotNet_FieldMapper_Get_System_String_System_Collections_Generic_IEnumerable_System_String__.md&amp;value=---%0Auid%3A%20FieldMapperForDotNet.FieldMapper.Get(System.String%2CSystem.Collections.Generic.IEnumerable%7BSystem.String%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/joemoceri/field-mapper-dotnet/blob/main/src/FieldMapperForDotNet/FieldMapper.cs/#L97">View Source</a>
+  </span>
+  <a id="FieldMapperForDotNet_FieldMapper_Get_" data-uid="FieldMapperForDotNet.FieldMapper.Get*"></a>
+  <h4 id="FieldMapperForDotNet_FieldMapper_Get_System_String_System_Collections_Generic_IEnumerable_System_String__" data-uid="FieldMapperForDotNet.FieldMapper.Get(System.String,System.Collections.Generic.IEnumerable{System.String})">Get(String, IEnumerable&lt;String&gt;)</h4>
+  <div class="markdown level1 summary"><p>This is the main method for getting values out of a string with mappings.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IDictionary&lt;string, string&gt; Get(string content, IEnumerable&lt;string&gt; mappings)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -141,33 +193,17 @@
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">content</span></td>
-        <td></td>
+        <td><p>The string content.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<span class="xref">System.String</span>&gt;</td>
         <td><span class="parametername">mappings</span></td>
-        <td></td>
+        <td><p>The mappings.</p>
+</td>
       </tr>
     </tbody>
   </table>
-  <h3 id="methods">Methods
-  </h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/joemoceri/field-mapper-dotnet/new/master/apiSpec/new?filename=FieldMapperForDotNet_FieldMapper_Get.md&amp;value=---%0Auid%3A%20FieldMapperForDotNet.FieldMapper.Get%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/joemoceri/field-mapper-dotnet/blob/master/src/FieldMapperForDotNet/FieldMapper.cs/#L44">View Source</a>
-  </span>
-  <a id="FieldMapperForDotNet_FieldMapper_Get_" data-uid="FieldMapperForDotNet.FieldMapper.Get*"></a>
-  <h4 id="FieldMapperForDotNet_FieldMapper_Get" data-uid="FieldMapperForDotNet.FieldMapper.Get">Get()</h4>
-  <div class="markdown level1 summary"><p>Get the dictionary result</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public IDictionary&lt;string, string&gt; Get()</code></pre>
-  </div>
   <h5 class="returns">Returns</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
@@ -179,8 +215,62 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Collections.Generic.IDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.String</span>&gt;</td>
-        <td><p>dictionary</p>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/joemoceri/field-mapper-dotnet/new/main/apiSpec/new?filename=FieldMapperForDotNet_FieldMapper_PreviewContent_System_String_System_Collections_Generic_IEnumerable_System_String__.md&amp;value=---%0Auid%3A%20FieldMapperForDotNet.FieldMapper.PreviewContent(System.String%2CSystem.Collections.Generic.IEnumerable%7BSystem.String%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/joemoceri/field-mapper-dotnet/blob/main/src/FieldMapperForDotNet/FieldMapper.cs/#L40">View Source</a>
+  </span>
+  <a id="FieldMapperForDotNet_FieldMapper_PreviewContent_" data-uid="FieldMapperForDotNet.FieldMapper.PreviewContent*"></a>
+  <h4 id="FieldMapperForDotNet_FieldMapper_PreviewContent_System_String_System_Collections_Generic_IEnumerable_System_String__" data-uid="FieldMapperForDotNet.FieldMapper.PreviewContent(System.String,System.Collections.Generic.IEnumerable{System.String})">PreviewContent(String, IEnumerable&lt;String&gt;)</h4>
+  <div class="markdown level1 summary"><p>Use this to see what the mappings should look like before they're mapped to values.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string PreviewContent(string content, IEnumerable&lt;string&gt; mappings)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">content</span></td>
+        <td><p>The string content.</p>
 </td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td><span class="parametername">mappings</span></td>
+        <td><p>The mappings to apply to the content.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
       </tr>
     </tbody>
   </table>
@@ -192,10 +282,10 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/joemoceri/field-mapper-dotnet/new/master/apiSpec/new?filename=FieldMapperForDotNet_FieldMapper.md&amp;value=---%0Auid%3A%20FieldMapperForDotNet.FieldMapper%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/joemoceri/field-mapper-dotnet/new/main/apiSpec/new?filename=FieldMapperForDotNet_FieldMapper.md&amp;value=---%0Auid%3A%20FieldMapperForDotNet.FieldMapper%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/joemoceri/field-mapper-dotnet/blob/master/src/FieldMapperForDotNet/FieldMapper.cs/#L11" class="contribution-link">View Source</a>
+                    <a href="https://github.com/joemoceri/field-mapper-dotnet/blob/main/src/FieldMapperForDotNet/FieldMapper.cs/#L13" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

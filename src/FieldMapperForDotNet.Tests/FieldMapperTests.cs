@@ -10,11 +10,53 @@ namespace FieldMapperForDotNet.Tests
     public class FieldMapperTests
     {
         [TestMethod]
-        [DeploymentItem("examples/WPFormsContactFormBody/plain-text-body")]
-        public void FieldMapperTests_WPFormsContactFormBody_PlainTextBody()
+        [DeploymentItem("examples/NinjaForms/plain-text-body")]
+        public void FieldMapperTests_NinjaForms_PlainTextBody()
+        {
+
+        }
+
+        [TestMethod]
+        [DeploymentItem("examples/NinjaForms/html-body")]
+        public void FieldMapperTests_NinjaForms_HtmlBody()
+        {
+
+        }
+
+        [TestMethod]
+        [DeploymentItem("examples/Forminator/plain-text-body")]
+        public void FieldMapperTests_Forminator_PlainTextBody()
+        {
+
+        }
+
+        [TestMethod]
+        [DeploymentItem("examples/Forminator/html-body")]
+        public void FieldMapperTests_Forminator_HtmlBody()
+        {
+
+        }
+
+        [TestMethod]
+        [DeploymentItem("examples/ContactForm7/plain-text-body")]
+        public void FieldMapperTests_ContactForm7_PlainTextBody()
+        {
+
+        }
+
+        [TestMethod]
+        [DeploymentItem("examples/ContactForm7/html-body")]
+        public void FieldMapperTests_ContactForm7_HtmlBody()
+        {
+
+        }
+
+        [TestMethod]
+        [DeploymentItem("examples/WPFormsContactForm/plain-text-body")]
+        public void FieldMapperTests_WPFormsContactForm_PlainTextBody()
         {
             // Arrange
-            var content = File.ReadAllText("examples/WPFormsContactFormBody/plain-text-body");
+            var content = File.ReadAllText("examples/WPFormsContactForm/plain-text-body");
 
             var mappings = new List<string>();
             mappings.Add("*Name*");
@@ -35,11 +77,11 @@ namespace FieldMapperForDotNet.Tests
         }
 
         [TestMethod]
-        [DeploymentItem("examples/WPFormsContactFormBody/html-body")]
-        public void FieldMapperTests_WPFormsContactFormBody_HtmlBody()
+        [DeploymentItem("examples/WPFormsContactForm/html-body")]
+        public void FieldMapperTests_WPFormsContactForm_HtmlBody()
         {
             // Arrange
-            var content = File.ReadAllText("examples/WPFormsContactFormBody/html-body");
+            var content = File.ReadAllText("examples/WPFormsContactForm/html-body");
 
             var mappings = new List<string>();
             mappings.Add("Name");

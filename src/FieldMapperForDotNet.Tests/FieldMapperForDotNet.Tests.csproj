@@ -7,10 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="examples\WPFormsContactFormBody\html-body">
+    <None Remove="examples\WPFormsContactForm\html-body" />
+    <None Remove="examples\WPFormsContactForm\plain-text-body" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="examples\WPFormsContactForm\html-body">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="examples\WPFormsContactFormBody\plain-text-body">
+    <Content Include="examples\WPFormsContactForm\plain-text-body">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
@@ -25,6 +30,12 @@
 
   <ItemGroup>
     <ProjectReference Include="..\FieldMapperForDotNet\FieldMapperForDotNet.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="examples\ContactForm7\" />
+    <Folder Include="examples\Forminator\" />
+    <Folder Include="examples\NinjaForms\" />
   </ItemGroup>
 
 </Project>

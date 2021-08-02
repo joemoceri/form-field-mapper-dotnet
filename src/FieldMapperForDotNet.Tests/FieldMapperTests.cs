@@ -10,6 +10,30 @@ namespace FieldMapperForDotNet.Tests
     public class FieldMapperTests
     {
         [TestMethod]
+        public void FieldMapperTests_NullConfiguration()
+        {
+            // Arrange
+            var fieldMapper = new FieldMapper(null);
+
+            // Assert
+            Assert.AreNotEqual(null, fieldMapper.Configuration);
+            Assert.AreEqual(FieldMapperConfiguration.Default.Options.DeEntitizeContent, fieldMapper.Configuration.Options.DeEntitizeContent);
+            Assert.AreEqual(FieldMapperConfiguration.Default.Options.SeparateByLineBreaks, fieldMapper.Configuration.Options.SeparateByLineBreaks);
+        }
+
+        [TestMethod]
+        public void FieldMapperTests_Configuration_NullOptions()
+        {
+            // Arrange
+            var configuration = new FieldMapperConfiguration(null);
+
+            // Assert
+            Assert.AreNotEqual(null, configuration.Options);
+            Assert.AreEqual(FieldMapperConfigurationOptions.Default.DeEntitizeContent, configuration.Options.DeEntitizeContent);
+            Assert.AreEqual(FieldMapperConfigurationOptions.Default.SeparateByLineBreaks, configuration.Options.SeparateByLineBreaks);
+        }
+
+        [TestMethod]
         [DeploymentItem("examples/ContactForm7/plain-text-body")]
         public void FieldMapperTests_ContactForm7_PlainTextBody()
         {

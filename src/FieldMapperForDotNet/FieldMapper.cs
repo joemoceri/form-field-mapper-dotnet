@@ -16,7 +16,7 @@ namespace FieldMapperForDotNet
         /// <summary>
         /// The configuration holds options that can change the behavior of the tool, such as choosing whether to DeEntitize the content first.
         /// </summary>
-        private readonly FieldMapperConfiguration _configuration;
+        public readonly FieldMapperConfiguration Configuration;
 
 
 
@@ -34,7 +34,7 @@ namespace FieldMapperForDotNet
         /// <param name="configuration">Your own <see cref="FieldMapperConfiguration"/></param>
         public FieldMapper(FieldMapperConfiguration configuration)
         {
-            _configuration = configuration ?? FieldMapperConfiguration.Default;
+            Configuration = configuration ?? FieldMapperConfiguration.Default;
         }
 
 
@@ -95,7 +95,7 @@ namespace FieldMapperForDotNet
                 .ToList();
             var keysCount = keysList.Count;
 
-            if (_configuration.Options.DeEntitizeContent)
+            if (Configuration.Options.DeEntitizeContent)
             {
                 var doc = new HtmlDocument();
 
@@ -105,7 +105,7 @@ namespace FieldMapperForDotNet
                     doc.DocumentNode.InnerText);
             }
 
-            if (_configuration.Options.SeparateByLineBreaks)
+            if (Configuration.Options.SeparateByLineBreaks)
             {
                 arguments.Content = Regex.Replace(arguments.Content,
                     @"\s{5,}", Environment.NewLine);

@@ -5,8 +5,7 @@
         {
           "files": [
             "**.csproj"
-          ],
-          "src": "C:\\Users\\jmoce\\source\\repos\\field-mapper-dotnet\\src\\FieldMapperForDotNet"
+          ]
         }
       ],
       "dest": "api",
@@ -53,7 +52,7 @@
         ]
       }
     ],
-    "dest": "_site",
+    "dest": "bin/_site",
     "globalMetadataFiles": [],
     "fileMetadataFiles": [],
     "template": [

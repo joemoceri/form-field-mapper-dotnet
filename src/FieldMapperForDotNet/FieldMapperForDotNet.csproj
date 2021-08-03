@@ -43,6 +43,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="HtmlAgilityPack" Version="1.11.34" />
+    <PackageReference Include="RIS" Version="3.14.8" />
   </ItemGroup>
 
   <ItemGroup>

@@ -23,7 +23,7 @@ namespace FieldMapperForDotNet.Tests
             mappings.Add(@"--"); // format the email to handle duplicate cases when necessary
 
             var configuration = new FieldMapperConfiguration();
-            configuration.options.DeEntitizeContent = false;
+            configuration.Options.DeEntitizeContent = false;
 
             var fieldMapper = new FieldMapper(configuration);
 

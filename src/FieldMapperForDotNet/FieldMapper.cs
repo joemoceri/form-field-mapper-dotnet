@@ -8,7 +8,7 @@ using System.Text.RegularExpressions;
 namespace FieldMapperForDotNet
 {
     /// <summary>
-    /// This is the main class used for mapping fields
+    /// This is the main class used for mapping fields.
     /// </summary>
     public class FieldMapper
     {
@@ -39,7 +39,7 @@ namespace FieldMapperForDotNet
         /// <returns></returns>
         public string PreviewContent(string content, IEnumerable<string> mappings)
         {
-            if (configuration.options.DeEntitizeContent)
+            if (configuration.Options.DeEntitizeContent)
             {
                 var doc = new HtmlDocument();
                 doc.LoadHtml(content);
@@ -47,7 +47,7 @@ namespace FieldMapperForDotNet
                 content = HtmlEntity.DeEntitize(doc.DocumentNode.InnerText);
             }
 
-            if (configuration.options.SeparateByLineBreaks)
+            if (configuration.Options.SeparateByLineBreaks)
             {
                 content = Regex.Replace(content, @"\s{5,}", Environment.NewLine);
             }

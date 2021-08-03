@@ -45,7 +45,7 @@ namespace FieldMapperForDotNet
         /// <param name="content">The string content.</param>
         /// <param name="keys">The keys.</param>
         /// <returns></returns>
-        private (string Content, string[] Keys) ValidateArguments(
+        private static (string Content, string[] Keys) ValidateArguments(
             string content, IEnumerable<string> keys)
         {
             var keysArray = keys as string[]
@@ -181,7 +181,7 @@ namespace FieldMapperForDotNet
             using var reader = new StringReader(
                 arguments.Content);
 
-            var result = new Dictionary<string, string>();
+            var result = new Dictionary<string, string>(20);
             var line = reader.ReadLine();
 
             while (line != null)

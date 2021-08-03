@@ -17,19 +17,26 @@ namespace FieldMapperForDotNet
         /// </summary>
         public readonly FieldMapperConfiguration Configuration;
 
-        /// <summary>
-        /// By default it uses <see cref="FieldMapperConfiguration"/>
-        /// </summary>
-        public FieldMapper(): this(new FieldMapperConfiguration()) { }
+
 
         /// <summary>
-        /// You can pass in your own <see cref="FieldMapperConfiguration"/>
+        /// By default it uses <see cref="FieldMapperConfiguration.Default"/>.
         /// </summary>
-        /// <param name="configuration"></param>
+        public FieldMapper()
+            : this(FieldMapperConfiguration.Default)
+        {
+
+        }
+        /// <summary>
+        /// You can pass in your own <see cref="FieldMapperConfiguration"/>. By default it uses <see cref="FieldMapperConfiguration.Default"/>.
+        /// </summary>
+        /// <param name="configuration">Your own <see cref="FieldMapperConfiguration"/></param>
         public FieldMapper(FieldMapperConfiguration configuration)
         {
-            Configuration = configuration;
+            Configuration = configuration ?? FieldMapperConfiguration.Default;
         }
+
+
 
         /// <summary>
         /// Use this to see what the mappings should look like before they're mapped to values.
@@ -37,7 +44,8 @@ namespace FieldMapperForDotNet
         /// <param name="content">The string content.</param>
         /// <param name="mappings">The mappings to apply to the content.</param>
         /// <returns></returns>
-        public string PreviewContent(string content, IEnumerable<string> mappings)
+        public string PreviewContent(string content,
+            IEnumerable<string> mappings)
         {
             if (Configuration.Options.DeEntitizeContent)
             {
@@ -94,7 +102,8 @@ namespace FieldMapperForDotNet
         /// <param name="content">The string content.</param>
         /// <param name="mappings">The mappings.</param>
         /// <returns></returns>
-        public IDictionary<string, string> Get(string content, IEnumerable<string> mappings)
+        public IDictionary<string, string> Get(string content,
+            IEnumerable<string> mappings)
         {
             Validate();
 
@@ -185,6 +194,8 @@ namespace FieldMapperForDotNet
             }
         }
 
+
+
         /// <summary>
         /// Internal method used to handle various mapping issues when trying to retrieve the right index
         /// </summary>
@@ -192,7 +203,8 @@ namespace FieldMapperForDotNet
         /// <param name="mappings">The mappings.</param>
         /// <param name="searchKey">The mapping it is looking for.</param>
         /// <returns></returns>
-        private int GetIndexOfKey(string content, IEnumerable<string> mappings, string searchKey)
+        private int GetIndexOfKey(string content,
+            IEnumerable<string> mappings, string searchKey)
         {
             var nestedKey = false;
             var nonSearchedKeys = mappings.Where(k => k != searchKey);

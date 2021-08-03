@@ -39,48 +39,93 @@ namespace FieldMapperForDotNet
 
 
         /// <summary>
+        /// Use this to validate methods arguments.
+        /// </summary>
+        /// <param name="content">The string content.</param>
+        /// <param name="keys">The keys.</param>
+        /// <returns></returns>
+        private (string Content, string[] Keys) ValidateArguments(
+            string content, IEnumerable<string> keys)
+        {
+            var keysArray = keys as string[]
+                            ?? keys?.ToArray();
+
+            if (string.IsNullOrWhiteSpace(content))
+            {
+                throw new ArgumentException(
+                    "Content cannot be null or empty.",
+                    nameof(content));
+            }
+            if (keysArray == null || keysArray.Length == 0)
+            {
+                throw new ArgumentException(
+                    "Mappings cannot be null or empty.",
+                    nameof(keys));
+            }
+            if (keysArray.Any(key => string.IsNullOrWhiteSpace(key)))
+            {
+                throw new ArgumentException(
+                    "Mappings cannot contain any empty values.",
+                    nameof(keys));
+            }
+            if (keysArray.Distinct().Count() != keysArray.Length)
+            {
+                throw new ArgumentException(
+                    "Duplicate mappings found. Please make sure they are all unique.",
+                    nameof(keys));
+            }
+
+            return (content, keysArray);
+        }
+
+
+
+        /// <summary>
         /// Use this to see what the mappings should look like before they're mapped to values.
         /// </summary>
         /// <param name="content">The string content.</param>
-        /// <param name="mappings">The mappings to apply to the content.</param>
+        /// <param name="keys">The keys.</param>
         /// <returns></returns>
         public string PreviewContent(string content,
-            IEnumerable<string> mappings)
+            IEnumerable<string> keys)
         {
+            var arguments = ValidateArguments(
+                content, keys);
+
             if (Configuration.Options.DeEntitizeContent)
             {
                 var doc = new HtmlDocument();
-                doc.LoadHtml(content);
+                doc.LoadHtml(arguments.Content);
 
-                content = HtmlEntity.DeEntitize(doc.DocumentNode.InnerText);
+                arguments.Content = HtmlEntity.DeEntitize(doc.DocumentNode.InnerText);
             }
 
             if (Configuration.Options.SeparateByLineBreaks)
             {
-                content = Regex.Replace(content, @"\s{5,}", Environment.NewLine);
+                arguments.Content = Regex.Replace(arguments.Content, @"\s{5,}", Environment.NewLine);
             }
 
-            content = content.Replace("\r\n", " ").Replace("\n", " ").Replace("\r", " ").Replace(Environment.NewLine, " ");
+            arguments.Content = arguments.Content.Replace("\r\n", " ").Replace("\n", " ").Replace("\r", " ").Replace(Environment.NewLine, " ");
 
             SeparateMappingsByLineBreaks();
 
-            return content;
+            return arguments.Content;
 
             void SeparateMappingsByLineBreaks()
             {
-                foreach (var searchMapping in mappings)
+                foreach (var searchMapping in arguments.Keys)
                 {
-                    var startIndex = GetIndexOfKey(content, mappings, searchMapping);
+                    var startIndex = GetIndexOfKey(arguments.Content, arguments.Keys, searchMapping);
                     var nextLocation = int.MaxValue;
 
-                    if (!content.Contains(Environment.NewLine) && startIndex != -1)
+                    if (!arguments.Content.Contains(Environment.NewLine) && startIndex != -1)
                     {
-                        content = content.Insert(startIndex, Environment.NewLine);
+                        arguments.Content = arguments.Content.Insert(startIndex, Environment.NewLine);
                     }
 
-                    foreach (var key in mappings.Where(k => k != searchMapping))
+                    foreach (var key in arguments.Keys.Where(k => k != searchMapping))
                     {
-                        var loc = content.IndexOf(key, startIndex + searchMapping.Length);
+                        var loc = arguments.Content.IndexOf(key, startIndex + searchMapping.Length);
 
                         if (loc != -1 && loc < nextLocation)
                         {
@@ -90,7 +135,7 @@ namespace FieldMapperForDotNet
 
                     if (nextLocation != int.MaxValue)
                     {
-                        content = content.Insert(nextLocation, Environment.NewLine);
+                        arguments.Content = arguments.Content.Insert(nextLocation, Environment.NewLine);
                     }
                 }
             }
@@ -100,21 +145,22 @@ namespace FieldMapperForDotNet
         /// This is the main method for getting values out of a string with mappings.
         /// </summary>
         /// <param name="content">The string content.</param>
-        /// <param name="mappings">The mappings.</param>
+        /// <param name="keys">The keys.</param>
         /// <returns></returns>
         public IDictionary<string, string> Get(string content,
-            IEnumerable<string> mappings)
+            IEnumerable<string> keys)
         {
-            Validate();
+            var arguments = ValidateArguments(
+                content, keys);
 
-            content = PreviewContent(content, mappings);
+            arguments.Content = PreviewContent(arguments.Content, arguments.Keys);
 
             var result = new Dictionary<string, string>();
 
-            using (var reader = new StringReader(content))
+            using (var reader = new StringReader(arguments.Content))
             {
                 var line = reader.ReadLine();
-                var orderedMappings = mappings.OrderByDescending(m => m.Length).ToList();
+                var orderedMappings = arguments.Keys.OrderByDescending(m => m.Length).ToList();
                 while (line != null)
                 {
                     line = line.Trim();
@@ -124,9 +170,9 @@ namespace FieldMapperForDotNet
                         if (line.Contains(mapping) && line.IndexOf(mapping) == 0)
                         {
                             var value = line.Substring(line.IndexOf(mapping) + mapping.Length).Trim();
-                            var startIndex = GetIndexOfKey(content, mappings, mapping);
+                            var startIndex = GetIndexOfKey(arguments.Content, arguments.Keys, mapping);
 
-                            var nextLineValue = GetMappingValueOnSubsequentLines(content.Substring(startIndex + line.Length));
+                            var nextLineValue = GetMappingValueOnSubsequentLines(arguments.Content.Substring(startIndex + line.Length));
 
                             value = value.Trim();
 
@@ -155,7 +201,7 @@ namespace FieldMapperForDotNet
 
                     while (line != null)
                     {
-                        foreach (var mapping in mappings)
+                        foreach (var mapping in arguments.Keys)
                         {
                             if (line.Contains(mapping))
                             {
@@ -169,29 +215,6 @@ namespace FieldMapperForDotNet
 
                 return result.Trim(' ', '|');
             }
-
-            void Validate()
-            {
-                if (string.IsNullOrWhiteSpace(content))
-                {
-                    throw new ArgumentException("Content cannot be null or empty.", nameof(content));
-                }
-
-                if (mappings == null || mappings.Count() == 0)
-                {
-                    throw new ArgumentException("Mappings cannot be null or empty.", nameof(mappings));
-                }
-                
-                if (mappings.Any(m => string.IsNullOrWhiteSpace(m)))
-                {
-                    throw new ArgumentException("Mappings cannot contain any empty values.", nameof(mappings));
-                }
-
-                if (mappings.Distinct().Count() != mappings.Count())
-                {
-                    throw new ArgumentException("Duplicate mappings found. Please make sure they are all unique.");
-                }
-            }
         }
 
 
@@ -200,14 +223,14 @@ namespace FieldMapperForDotNet
         /// Internal method used to handle various mapping issues when trying to retrieve the right index
         /// </summary>
         /// <param name="content">The string content.</param>
-        /// <param name="mappings">The mappings.</param>
+        /// <param name="keys">The keys.</param>
         /// <param name="searchKey">The mapping it is looking for.</param>
         /// <returns></returns>
         private int GetIndexOfKey(string content,
-            IEnumerable<string> mappings, string searchKey)
+            IEnumerable<string> keys, string searchKey)
         {
             var nestedKey = false;
-            var nonSearchedKeys = mappings.Where(k => k != searchKey);
+            var nonSearchedKeys = keys.Where(k => k != searchKey);
 
             foreach (var key in nonSearchedKeys)
             {
@@ -221,7 +244,7 @@ namespace FieldMapperForDotNet
             {
                 var tempContent = content;
 
-                var orderedKeys = mappings.OrderByDescending(m => m.Length).ToList();
+                var orderedKeys = keys.OrderByDescending(m => m.Length).ToList();
                 for (var i = 0; i < orderedKeys.Count(); i++)
                 {
                     tempContent = tempContent.Replace(orderedKeys[i], orderedKeys[i].ToUpperInvariant());

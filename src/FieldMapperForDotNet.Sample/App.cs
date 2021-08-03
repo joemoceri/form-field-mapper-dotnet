@@ -16,7 +16,7 @@ namespace FieldMapperForDotNet.Sample
             mappings.Add("First Name:");
             mappings.Add("Last Name:");
 
-            var result = fieldMapper.Get(content, mappings);
+            var result = fieldMapper.Parse(content, mappings);
 
             var firstName = result["First Name:"]; // outputs TestFirstName
             var lastName = result["Last Name:"]; // outputs TestLastName

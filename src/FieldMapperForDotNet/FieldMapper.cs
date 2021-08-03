@@ -31,7 +31,7 @@ namespace FieldMapperForDotNet
         /// <summary>
         /// You can pass in your own <see cref="FieldMapperConfiguration"/>. By default it uses <see cref="FieldMapperConfiguration.Default"/>.
         /// </summary>
-        /// <param name="configuration">Your own <see cref="FieldMapperConfiguration"/></param>
+        /// <param name="configuration">Your own <see cref="FieldMapperConfiguration"/>.</param>
         public FieldMapper(FieldMapperConfiguration configuration)
         {
             Configuration = configuration ?? FieldMapperConfiguration.Default;
@@ -87,7 +87,7 @@ namespace FieldMapperForDotNet
         /// <param name="content">The string content.</param>
         /// <param name="keys">The keys.</param>
         /// <returns></returns>
-        public string PreviewContent(string content,
+        public string PrepareContent(string content,
             IEnumerable<string> keys)
         {
             var arguments = ValidateArguments(
@@ -169,13 +169,13 @@ namespace FieldMapperForDotNet
         /// <param name="content">The string content.</param>
         /// <param name="keys">The keys.</param>
         /// <returns></returns>
-        public IDictionary<string, string> Get(string content,
+        public IDictionary<string, string> Parse(string content,
             IEnumerable<string> keys)
         {
             var arguments = ValidateArguments(
                 content, keys);
 
-            arguments.Content = PreviewContent(
+            arguments.Content = PrepareContent(
                 arguments.Content, arguments.Keys);
 
             using var reader = new StringReader(

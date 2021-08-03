@@ -1,25 +1,54 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FieldMapperForDotNet.Sample
 {
-    public class App
+    public sealed class App
     {
         public void Run()
         {
+            const string firstNameKey = "First Name:";
+            const string lastNameKey = "Last Name:";
+
+            Console.Write($"(Enter) {firstNameKey} ");
+            var firstNameValue = Console.ReadLine();
+            // input: TestFirstName
+            Console.Write($"(Enter) {lastNameKey} ");
+            var lastNameValue = Console.ReadLine();
+            // input: TestLastName
+
+            Console.WriteLine("\n\n\n");
+
+            string content = $"{firstNameKey} {firstNameValue}" +
+                             $"{Environment.NewLine}" +
+                             $"{lastNameKey} {lastNameValue}";
+
+            Console.WriteLine("(Result) Content ->");
+            Console.WriteLine(content);
+
+            Console.WriteLine("\n\n\n");
+
             var fieldMapper = new FieldMapper();
-            var content = $"First Name: TestFirstName{Environment.NewLine}Last Name: TestLastName";
-            var mappings = new List<string>();
-            mappings.Add("First Name:");
-            mappings.Add("Last Name:");
+            var mappings = new List<string>(2)
+            {
+                firstNameKey,
+                lastNameKey
+            };
 
-            var result = fieldMapper.Get(content, mappings);
+            var result = fieldMapper.Parse(
+                content, mappings);
 
-            var firstName = result["First Name:"]; // outputs TestFirstName
-            var lastName = result["Last Name:"]; // outputs TestLastName
+            var parsedFirstNameValue = result[firstNameKey];
+            var parsedLastNameValue = result[lastNameKey];
+
+            Console.WriteLine($"(Parsed) {firstNameKey} {parsedFirstNameValue}");
+            // output: TestFirstName
+            Console.WriteLine($"(Parsed) {lastNameKey} {parsedLastNameValue}");
+            // output: TestLastName
+
+            Console.WriteLine("\n\n\n");
+
+            Console.ReadKey(false);
         }
     }
 }
